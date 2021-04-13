@@ -35,9 +35,6 @@ var svg = d3.select("#scatter")
 var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
-// Import Data
-d3.csv("assets/data/data.csv").then(function(censusData) {
-
   console.log(censusData)
         // Step 1: Parse Data/Cast as numbers
         censusData.forEach(function(data) {
@@ -46,4 +43,3 @@ d3.csv("assets/data/data.csv").then(function(censusData) {
 
     });
 
-  });
