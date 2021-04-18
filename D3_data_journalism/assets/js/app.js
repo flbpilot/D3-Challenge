@@ -64,25 +64,27 @@ var circlesGroup = chartGroup.selectAll("circle")
 .attr("cx", d => xLinearScale(d.healthcare))
 .attr("cy", d => yLinearScale(d.age))
 .attr("r", "15")
-.attr("fill", "#ECB55A");
+.attr("fill", "#AFDFE4");
 
 //State Abbreviations
-var stateAbbr = chartGroup.append("g").selectAll("text")
+var stateAbbr = chartGroup.selectAll("circle")
 .data(censusData)
 .enter()
-.append("text")
+.append("circle")
 .text(function(d) {return d.abbr;})
-.attr("x", d => xLinearScale(d.poverty-0.25))
-.attr("y", d => yLinearScale(d.smokes-0.25))
+.attr("x", d => xLinearScale(d.healthcare-0.25))
+.attr("y", d => yLinearScale(d.age-0.25))
 .attr("r", "15")
-.attr("fill", "white");
+.attr("fill", "white")
+.attr("opacity", ".5");
+
 
 //Setup Tool Tip
 var toolTip = d3.tip()
 .attr("class", "tooltip")
 .offset([80, -60])
 .html(function(data, index) {
-  return (`${data.state}<br>Healthcare: ${data.healthcare} %<br>Age: ${data.age} %`);
+  return (`${data.state}<br>Poverty: ${data.poverty} %<br>Smokers: ${data.smokes} %`);
 });
 
     // Create tooltip in the chart
