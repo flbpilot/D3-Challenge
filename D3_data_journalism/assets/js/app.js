@@ -66,6 +66,17 @@ var circlesGroup = chartGroup.selectAll("circle")
 .attr("r", "15")
 .attr("fill", "#ECB55A");
 
+//State Abbreviations
+var stateAbbr = chartGroup.append("g").selectAll("text")
+.data(censusData)
+.enter()
+.append("text")
+.text(function(d) {return d.abbr;})
+.attr("x", d => xLinearScale(d.poverty-0.25))
+.attr("y", d => yLinearScale(d.smokes-0.25))
+.attr("r", "15")
+.attr("fill", "white");
+
 //Setup Tool Tip
 var toolTip = d3.tip()
 .attr("class", "tooltip")
